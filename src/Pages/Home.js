@@ -4,23 +4,28 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { Air, Search, SearchOutlined, Water } from '@mui/icons-material';
 import { Input } from '@mui/material';
 
+
 function Home() {
   return (
     <div className='home'>
         <div className="home__weather">
             <div className="weather__top">
             <LocationOnIcon />
-            <Input type='text'  placeholder='enter city name'></Input>
+            <input type='text'  placeholder='enter city name'></input>
             <SearchOutlined />
             </div>
             <div className="weather__middle">
-                <h1>sadah</h1>
+              <h2>Error!!</h2>
             </div>
             <div className="weather__bottom">
-                <Water />
-                <span>humidity</span>
-                <Air />
+              <div className="weather__bottomLeft">
+              <Water />
+                <span>Humidity</span>
+              </div>
+              <div className="weather__bottomRight">
+              <Air />
                 <span>Wind speed</span>
+              </div>
             </div>
         </div>
     </div>
