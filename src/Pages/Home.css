@@ -1,0 +1,24 @@
+.home {
+    display: grid;
+    justify-content: center;
+}
+.home__weather {
+    display: flex;
+    flex-direction: column;
+    background-color: yellow;
+}
+.weather__top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.weather__middle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.weather__bottom {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
