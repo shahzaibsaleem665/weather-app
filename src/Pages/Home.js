@@ -42,7 +42,7 @@ function Home() {
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
       searchLocation();      
-    } 
+    }
   }
  
 
