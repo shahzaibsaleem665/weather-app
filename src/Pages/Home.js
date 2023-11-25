@@ -12,7 +12,7 @@ function Home() {
   const [suggestions, setSuggestions] = useState([]);
   const geoApi= `http://api.openweathermap.org/geo/1.0/direct?q=${location}&appid=95f678220a4ce901983d937fd84be6ca`
   const url = `https://api.openweathermap.org/data/2.5/weather?lat=${data.lat}&lon=${data.lon}&exclude=hourly,daily&appid=95f678220a4ce901983d937fd84be6ca`;
-  const suggestionApi = `http://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=5&appid=95f678220a4ce901983d937fd84be6ca`;
+
 
 
   const getWeatherData = () => {
@@ -41,34 +41,10 @@ function Home() {
 
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
-      searchLocation();
-      setSuggestions([]);
-      
+      searchLocation();      
     } 
   }
-
-  const handleInputChange = (event) => {
-    const inputValue = event.target.value;
-    setLocation(inputValue);
-
-    if (inputValue.trim() !== '') {
-      axios.get(`http://api.openweathermap.org/geo/1.0/direct?q=${inputValue}&limit=5&appid=95f678220a4ce901983d937fd84be6ca`)
-      .then(response => {
-        setSuggestions(response.data);
-      })
-      .catch(error => {
-        console.error('Error fetching suggestions:', error);
-      });
-    } else {
-      setSuggestions([]);
-    }
-  };
-
-  const handleSuggestionClick = (suggest) => {
-    setLocation(suggest.name);
-    setSuggestions([]); // Hide suggestions after selection
-    searchLocation();
-  };
+ 
 
 
 // function to change temperature valus to celcius as the api renders the value in Kelvin
@@ -94,18 +70,9 @@ function Home() {
     <div className='home'>
         <div className='home__weather'>
             <div className="weather__top">
-            <input type='text' value={location} onChange={handleInputChange}  placeholder='enter city name' onKeyDown={handleKeyPress} required />
+            <input type='text' value={location} onChange={(event) => setLocation(event.target.value)}  placeholder='enter city name' onKeyDown={handleKeyPress} required />
             <SearchOutlined onClick={searchLocation}/>
             </div>
-            {suggestions.length > 0 && (
-        <ul className="suggestions-list">
-           {suggestions.map((suggest) => (
-            <li key={suggest.name} onClick={() => handleSuggestionClick(suggest)}>
-              {suggest.name}, {suggest.country}
-            </li>
-          ))}
-        </ul>
-      )}
             <div className="weather__middle">
               <div className="weather__middleLocation">
                <h3>{data.name}</h3>
